@@ -1,3 +1,5 @@
+package tests;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import com.github.javafaker.Faker;
@@ -10,8 +12,6 @@ public class TestData {
     String lastName = faker.name().lastName();
     String fullName = firstName + " " + lastName;
     String userEmail = faker.internet().emailAddress();
-
-    //    String invalidEmail = "email@domain";
     String invalidEmail = String.format("%s@%s", faker.dog().name(), faker.internet().domainSuffix());
 
             String userGender = setRandomValue("Male", "Female", "Other");
@@ -39,12 +39,12 @@ public class TestData {
     }
 
     public String setRandomCity (String state) {
-        switch (state) {
-            case "Uttar Pradesh": return setRandomValue("Agra", "Lucknow", "Merrut");
-            case "NCR": return setRandomValue("Delhi", "Gurgaon", "Noida");
-            case "Haryana": return setRandomValue("Karnal", "Panipat");
-            case "Rajasthan": return setRandomValue("Jaipur", "Jaiselmer");
-            default: return "";
-        }
+        return switch (state) {
+            case "Uttar Pradesh" -> setRandomValue("Agra", "Lucknow", "Merrut");
+            case "NCR" -> setRandomValue("Delhi", "Gurgaon", "Noida");
+            case "Haryana" -> setRandomValue("Karnal", "Panipat");
+            case "Rajasthan" -> setRandomValue("Jaipur", "Jaiselmer");
+            default -> "";
+        };
     }
 }
