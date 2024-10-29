@@ -8,8 +8,13 @@ public class TestData {
 
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
+    String fullName = firstName + " " + lastName;
     String userEmail = faker.internet().emailAddress();
-    String userGender = setRandomValue("Male", "Female", "Other");
+
+    //    String invalidEmail = "email@domain";
+    String invalidEmail = String.format("%s@%s", faker.dog().name(), faker.internet().domainSuffix());
+
+            String userGender = setRandomValue("Male", "Female", "Other");
     String userNumber = String.valueOf(faker.number().numberBetween(7_000_000_000L, 8_999_999_999L));
     String userBirthYear = String.valueOf(faker.number().numberBetween(1924, 2010));
     String userBirthMonth = setRandomValue("February", "March", "April", "May", "June", "July", "August", "September",
@@ -21,6 +26,7 @@ public class TestData {
     String picturePath = setRandomValue("img/avatar.png", "img/avatar2.jpg");
     String pictureName = picturePath.substring(picturePath.lastIndexOf("/") + 1);
     String currentAddress = faker.address().streetAddress();
+    String permanentAddress = faker.address().streetAddress();
 
     String state = setRandomValue("Uttar Pradesh", "NCR", "Haryana", "Rajasthan");
     String city = setRandomCity(state);
